@@ -9,6 +9,9 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+import com.chb.mis.utils.Methods;
+import com.chb.mis.utils.Utils;
+import com.chb.mis.wirelessusb.WirelessUSB;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.chb.mis;
+package com.chb.mis.wirelessusb;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,12 +6,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.widget.TextView;
-import org.apache.ftpserver.FtpServer;
-import org.apache.ftpserver.FtpServerFactory;
-import org.apache.ftpserver.ftplet.FtpException;
-import org.apache.ftpserver.listener.ListenerFactory;
-import org.apache.ftpserver.ssl.SslConfigurationFactory;
-import org.apache.ftpserver.usermanager.PropertiesUserManagerFactory;
+import com.chb.mis.R;
+import com.chb.mis.utils.Utils;
 
 import java.io.*;
 

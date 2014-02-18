@@ -1,4 +1,4 @@
-package com.chb.mis;
+package com.chb.mis.utils;
 
 /**
  * Created by hempel on 14-2-18.

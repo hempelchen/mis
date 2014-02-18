@@ -1,8 +1,9 @@
-package com.chb.mis;
+package com.chb.mis.utils;
 
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.text.format.Formatter;
+import com.chb.mis.MisMain;
 
 /**
  * Created by hempel on 14-2-18.
