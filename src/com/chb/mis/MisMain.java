@@ -3,21 +3,22 @@ package com.chb.mis;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-import com.chb.mis.utils.Methods;
-import com.chb.mis.utils.Utils;
-import com.chb.mis.wirelessusb.WirelessUSB;
+import com.chb.mis.locate.LocateActivity;
+import com.chb.mis.wirelessusb.WirelessUSBActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MisMain extends Activity {
 	private static MisMain instance = null;
+	private boolean mIsExit = false;
 
 	public static MisMain getInstance() {
 		return instance;
@@ -42,16 +43,19 @@ public class MisMain extends Activity {
 		//生成动态数组，并且转入数据
 		ArrayList<HashMap<String, Object>> lstImageItem = new ArrayList<HashMap<String, Object>>();
 
-		HashMap<String, Object> map = new HashMap<String, Object>();
-//		map.put("ItemImage", R.drawable.icon);//添加图像资源的ID
-		map.put("ItemText", "无线USB");//按序号做ItemText
-		lstImageItem.add(map);
+		HashMap<String, Object> map1 = new HashMap<String, Object>();
+		map1.put("ItemText", "无线USB");
+		lstImageItem.add(map1);
 
-		for (int i = 1; i < 9; i++) {
-			HashMap<String, Object> map1 = new HashMap<String, Object>();
-//			map1.put("ItemImage", R.drawable.icon);//添加图像资源的ID
-			map1.put("ItemText", "NO." + String.valueOf(i));//按序号做ItemText
-			lstImageItem.add(map1);
+		HashMap<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("ItemText", "定位");
+		lstImageItem.add(map2);
+
+		for (int i = 2; i < 9; i++) {
+			HashMap<String, Object> map = new HashMap<String, Object>();
+//			map.put("ItemImage", R.drawable.icon);//添加图像资源的ID
+			map.put("ItemText", "NO." + String.valueOf(i));//按序号做ItemText
+			lstImageItem.add(map);
 		}
 		//生成适配器的ImageItem <====> 动态数组的元素，两者一一对应
 		SimpleAdapter saImageItems = new SimpleAdapter(this, //没什么解释
@@ -87,11 +91,17 @@ public class MisMain extends Activity {
 			HashMap<String, Object> item = (HashMap<String, Object>) arg0.getItemAtPosition(arg2);
 			//显示所选Item的ItemText
 //			setTitle((String) item.get("ItemText"));
+			Intent intent;
 
 			switch (arg2) {
 				case 0: //热点
 //					Toast.makeText(getApplicationContext(), "启动无线USB", Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent(MisMain.this, WirelessUSB.class);
+					intent = new Intent(MisMain.this, WirelessUSBActivity.class);
+					startActivity(intent);
+					break;
+
+				case 1://定位
+					intent = new Intent(MisMain.this, LocateActivity.class);
 					startActivity(intent);
 					break;
 
@@ -102,4 +112,24 @@ public class MisMain extends Activity {
 		}
 
 	}
+
+	@Override
+	public void onBackPressed() {
+		if (mIsExit) {
+			this.finish();
+			System.exit(0);
+			return;
+		}
+		new Handler().postDelayed(new Runnable() {
+
+			@Override
+			public void run() {
+				mIsExit = false;
+			}
+		}, 3000);
+		Toast.makeText(this, "连续点击退出", Toast.LENGTH_SHORT).show();
+		mIsExit = true;
+
+	}
+
 }

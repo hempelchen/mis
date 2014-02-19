@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+		>
+	<TextView
+			android:id="@+id/tx1"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="定位示例"
+			android:paddingBottom="20dp" android:textAlignment="center"/>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+		<Button
+				android:id="@+id/btn1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="GPS定位"
+				android:layout_alignParentTop="true"
+				android:layout_toLeftOf="@+id/btn2"
+				android:layout_marginRight="10dp"/>
+		<Button android:id="@+id/btn2"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="网络定位"
+		        android:layout_alignParentTop="true"
+		        android:layout_centerHorizontal="true"/>
+		<Button android:id="@+id/btn3"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="被动定位"
+		        android:layout_marginLeft="10dp"
+		        android:layout_alignParentTop="true"
+		        android:layout_toRightOf="@+id/btn2"/>
+	</RelativeLayout>
+</LinearLayout>
+

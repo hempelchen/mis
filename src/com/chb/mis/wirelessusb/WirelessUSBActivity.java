@@ -15,7 +15,7 @@ import java.io.*;
 /**
  * Created by hempel on 14-2-18.
  */
-public class WirelessUSB extends Activity {
+public class WirelessUSBActivity extends Activity {
 	private String ftpConfigDir= Environment.getExternalStorageDirectory().getAbsolutePath()+"/ftpConfig/";
 	private String wuSuccess = "请在我的电脑或者浏览器中输入以下地址（电脑和手机要在同一个路由器下）：";
 	private String wuFailed = "请先打开WIFI并连接成功";
