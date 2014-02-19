@@ -71,7 +71,8 @@ public class MisMain extends Activity {
 
 	private Runnable mainGetMis = new Runnable() {
 		public void run() {
-			Utils.phoneWifiIpV4 = Methods.getLocalIpAddress();
+			//IP地址必须在使用时实时检查，防止用户开始打开，后来关闭
+//			Utils.phoneWifiIpV4 = Methods.getLocalIpAddress();
 		}
 	};
 

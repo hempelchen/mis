@@ -9,6 +9,6 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:id="@+id/wu_textView"
-			android:textSize="26dp"
+			android:textSize="20dp"
 			android:layout_gravity="center_horizontal"/>
 </LinearLayout>

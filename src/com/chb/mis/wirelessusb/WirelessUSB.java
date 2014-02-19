@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.widget.TextView;
 import com.chb.mis.R;
+import com.chb.mis.utils.Methods;
 import com.chb.mis.utils.Utils;
 
 import java.io.*;
@@ -16,6 +17,8 @@ import java.io.*;
  */
 public class WirelessUSB extends Activity {
 	private String ftpConfigDir= Environment.getExternalStorageDirectory().getAbsolutePath()+"/ftpConfig/";
+	private String wuSuccess = "请在我的电脑或者浏览器中输入以下地址（电脑和手机要在同一个路由器下）：";
+	private String wuFailed = "请先打开WIFI并连接成功";
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,14 +26,18 @@ public class WirelessUSB extends Activity {
 		this.setTitle(R.string.wireless_usb_title);
 		this.setTitleColor(Color.BLUE);
 
-//		FtpServerImpl.getInstance().startFtpServer();
-
 		TextView textView = (TextView) findViewById(R.id.wu_textView);
-		textView.setText("请在我的电脑或者浏览器中输入以下地址：\n ftp://" + Utils.phoneWifiIpV4 + ":" + FtpServerImpl.ftpServerPort);
 		textView.setTextColor(Color.YELLOW);
+		Utils.phoneWifiIpV4 = Methods.getLocalIpAddress();
+		if(Utils.phoneWifiIpV4.equals("0.0.0.0")) {
+			textView.setText(wuFailed);
+		} else {
+			textView.setText(wuSuccess + "ftp://" + Utils.phoneWifiIpV4 + ":" + FtpServerImpl.ftpServerPort);
 
-		Thread thread = new Thread(null, startFtpServer, "Background");
-		thread.start();
+			Thread thread = new Thread(null, startFtpServer, "Background");
+			thread.start();
+		}
+
 	}
 
 	private Runnable startFtpServer = new Runnable() {
