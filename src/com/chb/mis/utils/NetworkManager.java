@@ -18,13 +18,18 @@ public class NetworkManager {
 	private static NetworkManager instance = null;
 
 	public static NetworkManager getInstance(Context context) {
-		if (instance == null) {
-			instance = new NetworkManager(context);
+		if(instance ==  null) {
+			synchronized (NetworkManager.class) {
+				if (instance == null) {
+					instance = new NetworkManager(context);
+				}
+			}
 		}
+
 		return instance;
 	}
 
-	public NetworkManager(Context context) {
+	private NetworkManager(Context context) {
 		this.context = context;
 		connManager = (ConnectivityManager) this.context
 				                                    .getSystemService(Context.CONNECTIVITY_SERVICE);
