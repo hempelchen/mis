@@ -7,13 +7,11 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Process;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.chb.mis.R;
 
 public class LocateActivity extends Activity {
@@ -124,8 +122,8 @@ public class LocateActivity extends Activity {
 		Location location = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
 		if (location != null) {
 			Log.i("LBS", "Location changed : Lat: "
-							             + location.getLatitude() + " Lon: "
-							             + location.getLongitude());
+					             + location.getLatitude() + " Lon: "
+					             + location.getLongitude());
 			tx1.setText("被动定位成功\n经度： " + location.getLongitude() + "\n纬度： " + location.getLatitude());
 		} else {
 			tx1.setText("被动定位失败，试试别的定位方法？");

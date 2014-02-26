@@ -106,7 +106,7 @@ public class MisMain extends Activity {
 					break;
 
 				default:
-					Toast.makeText(getApplicationContext(), (String)item.get("ItemText"), Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), (String) item.get("ItemText"), Toast.LENGTH_SHORT).show();
 					break;
 			}
 		}

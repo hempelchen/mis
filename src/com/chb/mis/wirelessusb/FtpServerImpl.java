@@ -19,14 +19,14 @@ public class FtpServerImpl {
 
 	public final static int ftpServerPort = 3190;
 
-	public static FtpServerImpl getInstance(){
+	public static FtpServerImpl getInstance() {
 		if (instance == null) {
 			instance = new FtpServerImpl();
 		}
 		return instance;
 	}
 
-	public static void startFtpServer(String confFile){
+	public static void startFtpServer(String confFile) {
 		//      Now, let's configure the port on which the default listener waits for connections.
 
 		FtpServerFactory serverFactory = new FtpServerFactory();
@@ -35,7 +35,7 @@ public class FtpServerImpl {
 
 		PropertiesUserManagerFactory userManagerFactory = new PropertiesUserManagerFactory();
 
-		String[] str ={"mkdir", confFile};
+		String[] str = {"mkdir", confFile};
 		try {
 			Process ps = Runtime.getRuntime().exec(str);
 			try {
@@ -43,12 +43,12 @@ public class FtpServerImpl {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-		}catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		String filename=confFile+"users.properties";//"/sdcard/users.properties";
-		File files=new File(filename);
+		String filename = confFile + "users.properties";//"/sdcard/users.properties";
+		File files = new File(filename);
 
 		userManagerFactory.setFile(files);
 		serverFactory.setUserManager(userManagerFactory.createUserManager());
@@ -68,7 +68,7 @@ public class FtpServerImpl {
 		}
 	}
 
-	public static void startFtpServerSsl(String confFile){
+	public static void startFtpServerSsl(String confFile) {
 		//      Now, let's make it possible for a client to use FTPS (FTP over SSL) for the default listener.
 
 
@@ -81,7 +81,7 @@ public class FtpServerImpl {
 
 		// define SSL configuration
 		SslConfigurationFactory ssl = new SslConfigurationFactory();
-		ssl.setKeystoreFile(new File(confFile+"ftpserver.jks"));
+		ssl.setKeystoreFile(new File(confFile + "ftpserver.jks"));
 		ssl.setKeystorePassword("password");
 
 		// set the SSL configuration for the listener
@@ -92,7 +92,7 @@ public class FtpServerImpl {
 		serverFactory.addListener("default", factory.createListener());
 
 		PropertiesUserManagerFactory userManagerFactory = new PropertiesUserManagerFactory();
-		userManagerFactory.setFile(new File(confFile+"users.properties"));
+		userManagerFactory.setFile(new File(confFile + "users.properties"));
 
 		serverFactory.setUserManager(userManagerFactory.createUserManager());
 
@@ -106,8 +106,8 @@ public class FtpServerImpl {
 		}
 	}
 
-	public static void stopFtpServer(){
-		if (server !=  null) {
+	public static void stopFtpServer() {
+		if (server != null) {
 			server.stop();
 			server = null;
 		}

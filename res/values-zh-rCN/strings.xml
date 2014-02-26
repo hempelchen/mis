@@ -2,5 +2,6 @@
 <resources>
 	<string name="app_name">MIS</string>
 	<string name="wireless_usb_title">无线USB</string>
+	<string name="memory_clean">一键清理内存</string>
 
 </resources>
