@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+import com.chb.mis.light.LightActivity;
 import com.chb.mis.locate.LocateActivity;
 import com.chb.mis.wirelessusb.WirelessUSBActivity;
 
@@ -17,10 +18,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MisMain extends Activity {
-	private static MisMain instance = null;
 	private boolean mIsExit = false;
 
+	private static MisMain instance = null;
 	public static MisMain getInstance() {
+		synchronized (MisMain.class) {
+			if(instance == null){
+				synchronized (MisMain.class) {
+					if(instance == null){
+						instance = new MisMain();
+					}
+				}
+			}
+		}
 		return instance;
 	}
 
@@ -44,14 +54,18 @@ public class MisMain extends Activity {
 		ArrayList<HashMap<String, Object>> lstImageItem = new ArrayList<HashMap<String, Object>>();
 
 		HashMap<String, Object> map1 = new HashMap<String, Object>();
-		map1.put("ItemText", "无线USB");
+		map1.put("ItemText", getString(R.string.wireless_usb_title));
 		lstImageItem.add(map1);
 
 		HashMap<String, Object> map2 = new HashMap<String, Object>();
-		map2.put("ItemText", "定位");
+		map2.put("ItemText", getString(R.string.location_title));
 		lstImageItem.add(map2);
 
-		for (int i = 2; i < 9; i++) {
+		HashMap<String, Object> map3 = new HashMap<String, Object>();
+		map3.put("ItemText", getString(R.string.light_title));
+		lstImageItem.add(map3);
+
+		for (int i = 3; i < 9; i++) {
 			HashMap<String, Object> map = new HashMap<String, Object>();
 //			map.put("ItemImage", R.drawable.icon);//添加图像资源的ID
 			map.put("ItemText", "NO." + String.valueOf(i));//按序号做ItemText
@@ -102,6 +116,11 @@ public class MisMain extends Activity {
 
 				case 1://定位
 					intent = new Intent(MisMain.this, LocateActivity.class);
+					startActivity(intent);
+					break;
+
+				case 2://手电筒
+					intent = new Intent(MisMain.this, LightActivity.class);
 					startActivity(intent);
 					break;
 

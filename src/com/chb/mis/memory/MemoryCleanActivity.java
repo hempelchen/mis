@@ -12,10 +12,9 @@ import com.chb.mis.R;
 public class MemoryCleanActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.wireless_usb);
-		this.setTitle(R.string.memory_clean);
+		this.setTitle(R.string.memory_clean_title);
 		this.setTitleColor(Color.BLUE);
+		setContentView(R.layout.wireless_usb);
 
 		TextView textView = (TextView) findViewById(R.id.wu_textView);
 		textView.setTextColor(Color.YELLOW);

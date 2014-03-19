@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">MIS</string>
+
+	<string name="wireless_usb_title">无线USB</string>
+
+	<string name="light_title">手电筒</string>
+	<string name="light_status">手电筒当前状态：</string>
+
+	<string name="memory_clean_title">一键清理内存</string>
+
+
 </resources>

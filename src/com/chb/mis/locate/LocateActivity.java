@@ -27,7 +27,10 @@ public class LocateActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.setTitle(R.string.location_title);
+		this.setTitleColor(Color.BLUE);
 		setContentView(R.layout.locate);
+
 		tx1 = (TextView) findViewById(R.id.tx1);
 		tx1.setTextSize(18);
 		tx1.setText("我是定位进程，我的进程 PID = " + Process.myPid());

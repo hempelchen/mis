@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+	<com.chb.mis.light.FlashlightSurface
+			android:id="@+id/light_surfaceview"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			/>
+	<Button
+			android:id="@+id/light_btn"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+	        android:text="轻触屏幕来开关手电筒"
+	        android:background="#FF000000"
+			/>
+	<!--ImageView
+			android:id="@+id/light_image"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:src="@drawable/main_bg"
+			android:background="#FFFFFFFF"
+			/!-->
+
+</RelativeLayout>

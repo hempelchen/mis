@@ -22,9 +22,10 @@ public class WirelessUSBActivity extends Activity {
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.wireless_usb);
 		this.setTitle(R.string.wireless_usb_title);
 		this.setTitleColor(Color.BLUE);
+		setContentView(R.layout.wireless_usb);
+
 
 		TextView textView = (TextView) findViewById(R.id.wu_textView);
 		textView.setTextColor(Color.YELLOW);
