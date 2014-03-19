@@ -4,8 +4,8 @@
 	android:layout_height="fill_parent"
 	android:orientation="vertical">
 	<Button
-		android:id="@+id/btn_mobile_data_switcher"
-		android:text="拨号"
+		android:id="@+id/btn_mobile_light_switcher"
+		android:text="手电"
 		android:textSize="13dp"
 		android:layout_width="55dp"
 		android:layout_height="55dp"
@@ -16,8 +16,8 @@
 			android:text=""
 			android:textColor="#2FFF2F"
 			android:textSize="13dp"
-			android:id="@+id/tx_mobile_data_status"
+			android:id="@+id/tx_mobile_light_status"
 			android:gravity="center"
-			android:layout_below="@id/btn_mobile_data_switcher"
+			android:layout_below="@id/btn_mobile_light_switcher"
 			android:layout_alignParentLeft="true"/>
 </RelativeLayout>

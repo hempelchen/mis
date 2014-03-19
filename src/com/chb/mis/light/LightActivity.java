@@ -80,6 +80,10 @@ public class LightActivity extends Activity {
 		}
 	}
 
+	public boolean getLightStatus(){
+		return isFlashlightOn;
+	}
+
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 //		if (MotionEvent.ACTION_UP == event.getAction()) {
