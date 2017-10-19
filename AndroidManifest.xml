@@ -51,8 +51,9 @@
 		<!-- 手电筒-->
 		<activity android:name=".light.LightActivity"
 		          android:screenOrientation="portrait"/>
+        <activity android:name=".rabbitmq.RabbitMqActivity" />
 
-		<!-- 手机拨号widget -->
+        <!-- 手机拨号widget -->
 		<receiver
 				android:label="GPRS"
 				android:name=".widget.MyWidgetProvider">

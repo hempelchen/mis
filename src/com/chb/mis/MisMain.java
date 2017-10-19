@@ -12,6 +12,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import com.chb.mis.light.LightActivity;
 import com.chb.mis.locate.LocateActivity;
+import com.chb.mis.rabbitmq.RabbitMqActivity;
 import com.chb.mis.wirelessusb.WirelessUSBActivity;
 
 import java.util.ArrayList;
@@ -64,6 +65,10 @@ public class MisMain extends Activity {
 		HashMap<String, Object> map3 = new HashMap<String, Object>();
 		map3.put("ItemText", getString(R.string.light_title));
 		lstImageItem.add(map3);
+
+		HashMap<String, Object> map4 = new HashMap<String, Object>();
+		map4.put("ItemText", getString(R.string.rabbitmq_title));
+		lstImageItem.add(map4);
 
 		for (int i = 3; i < 9; i++) {
 			HashMap<String, Object> map = new HashMap<String, Object>();
@@ -121,6 +126,11 @@ public class MisMain extends Activity {
 
 				case 2://手电筒
 					intent = new Intent(MisMain.this, LightActivity.class);
+					startActivity(intent);
+					break;
+
+				case 3://消息队列
+					intent = new Intent(MisMain.this, RabbitMqActivity.class);
 					startActivity(intent);
 					break;
 
