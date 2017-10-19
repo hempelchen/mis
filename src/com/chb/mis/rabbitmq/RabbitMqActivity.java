@@ -186,7 +186,7 @@ public class RabbitMqActivity extends Activity {
     }
 
     public String getCurDate() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss:SSS");
         Date curDate = new Date(System.currentTimeMillis());//获取当前时间
         String str = formatter.format(curDate);
         return "["+str+"]: ";
