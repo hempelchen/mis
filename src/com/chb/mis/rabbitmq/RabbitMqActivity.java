@@ -9,6 +9,7 @@ import android.os.Message;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chb.mis.R;
 import com.rabbitmq.client.Channel;
@@ -24,7 +25,9 @@ import java.util.Date;
 public class RabbitMqActivity extends Activity {
     public static final int RABBITMQ_SEND_VIEW = 0;
     public static final int RABBITMQ_RECV_VIEW = 1;
+    public static final int RABBITMQ_TOAST = 2;
 
+    private boolean bRecv = false;
     private final static String QUEUE_NAME = "queue"; //队列名称
     private static RabbitMqActivity instance = null;
     private TextView tx1, tx2;
@@ -91,6 +94,11 @@ public class RabbitMqActivity extends Activity {
                     @Override
                     public void run() {
                         try {
+                            if (bRecv) {
+                                sendMsg(RABBITMQ_TOAST, "已经开始接收消息了，不要重复点击");
+                                return;
+                             }
+                            bRecv = true;
                             recvDoit();
                         } catch (Exception e) {
                             tx2.setText(getCurDate() + e.toString());
@@ -117,6 +125,9 @@ public class RabbitMqActivity extends Activity {
                 case RABBITMQ_RECV_VIEW:
                     //完成主界面更新,拿到数据
                     tx2.setText(data);
+                    break;
+                case RABBITMQ_TOAST:
+                    Toast.makeText(instance, data, Toast.LENGTH_SHORT).show();
                     break;
                 default:
                     break;
@@ -185,13 +196,19 @@ public class RabbitMqActivity extends Activity {
 
             //3.创建队列消费者
             QueueingConsumer consumer = new QueueingConsumer(recvChannel);
-            recvChannel.basicConsume(QUEUE_NAME, true, consumer);//指定消费队列
+            //RabbitMQ不会发消息给该消费者,除非该消费者已经处理完当前的消息
+            recvChannel.basicQos(1);
+            recvChannel.basicConsume(QUEUE_NAME, false, consumer);//指定消费队列，false表示需要手工Ack确认
+            // 然后在处理完任务后, 手动发送一次消息确认
             while (true) {
                 //4.开启nextDelivery阻塞方法（内部实现其实是阻塞队列的take方法）
                 QueueingConsumer.Delivery delivery = consumer.nextDelivery();
                 String message = new String(delivery.getBody());
                 sendMsg(RABBITMQ_RECV_VIEW, getCurDate() + message);
                 System.out.println("[CHB Received]" + message);
+
+                // 然后在处理完任务后, 手动发送一次消息确认
+                recvChannel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
             }
         } catch (Exception e) {
             sendMsg(RABBITMQ_SEND_VIEW, e.toString());
