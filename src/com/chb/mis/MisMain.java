@@ -10,6 +10,8 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
+import com.chb.mis.kafkamq.KafkaMqActivity;
 import com.chb.mis.light.LightActivity;
 import com.chb.mis.locate.LocateActivity;
 import com.chb.mis.rabbitmq.RabbitMqActivity;
@@ -70,6 +72,10 @@ public class MisMain extends Activity {
 		map4.put("ItemText", getString(R.string.rabbitmq_title));
 		lstImageItem.add(map4);
 
+		HashMap<String, Object> map5 = new HashMap<String, Object>();
+		map5.put("ItemText", getString(R.string.kafkamq_title));
+		lstImageItem.add(map5);
+
 		for (int i = 3; i < 9; i++) {
 			HashMap<String, Object> map = new HashMap<String, Object>();
 //			map.put("ItemImage", R.drawable.icon);//添加图像资源的ID
@@ -129,11 +135,15 @@ public class MisMain extends Activity {
 					startActivity(intent);
 					break;
 
-				case 3://消息队列
+				case 3://消息队列-RabbitMQ
 					intent = new Intent(MisMain.this, RabbitMqActivity.class);
 					startActivity(intent);
 					break;
 
+				case 4://消息队列-KafkaMQ
+					intent = new Intent(MisMain.this, KafkaMqActivity.class);
+					startActivity(intent);
+					break;
 				default:
 					Toast.makeText(getApplicationContext(), (String) item.get("ItemText"), Toast.LENGTH_SHORT).show();
 					break;

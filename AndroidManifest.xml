@@ -52,6 +52,7 @@
 		<activity android:name=".light.LightActivity"
 		          android:screenOrientation="portrait"/>
         <activity android:name=".rabbitmq.RabbitMqActivity" />
+        <activity android:name=".kafkamq.KafkaMqActivity" />
 
         <!-- 手机拨号widget -->
 		<receiver

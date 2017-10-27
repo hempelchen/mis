@@ -9,7 +9,8 @@
 
 	<string name="memory_clean_title">一键清理内存</string>
 
-	<string name="rabbitmq_title">消息队列</string>
+	<string name="rabbitmq_title">Rabbit MQ</string>
+	<string name="kafkamq_title">Kafka MQ</string>
 
 
 </resources>

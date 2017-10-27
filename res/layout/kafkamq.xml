@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--EditText
+        android:id="@+id/kafkamq_et1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入消息"/>
+    <Button android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/kafkamq_send"
+        android:text="kafkamq Send"/>
+    <TextView
+        android:id="@+id/tx1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="发送消息"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"/-->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dip"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#FF909090"/>
+
+    <Button android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/kafkamq_recv"
+        android:text="kafkamq Recv"/>
+    <TextView
+        android:id="@+id/tx2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="接收消息"
+        android:paddingBottom="20dp" android:textAlignment="center"/>
+</LinearLayout>
